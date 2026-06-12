@@ -1,11 +1,24 @@
-import os
+// rewrite_dark.js — Node.js equivalent of rewrite_dark.py
+// Writes the full dark-theme index.html and style.css from scratch.
+//
+// Usage:  node rewrite_dark.js
+//   (run from the root of the portfolio folder, i.e. "New Portfolio/")
 
-html_content = """<!DOCTYPE html>
+const fs   = require('fs');
+const path = require('path');
+
+const ROOT       = path.join(__dirname, '..');
+const INDEX_PATH = path.join(ROOT, 'index.html');
+const CSS_PATH   = path.join(ROOT, 'style.css');
+
+// ── HTML ──────────────────────────────────────────────────────────────────────
+
+const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Portfolio of Anusha Stefy J - UI/UX Designer & Web Developer.">
+    <meta name="description" content="Personal Portfolio of Anusha Stefy J - UI/UX Designer &amp; Web Developer.">
     <title>Anusha Stefy J | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -40,7 +53,7 @@ html_content = """<!DOCTYPE html>
                     <h1 class="hero-name">Anusha Stefy J</h1>
                     <div class="hero-title-pill">Front-end Developer / UI Designer</div>
                     <p class="hero-desc">
-                        Skills: Full Stack Development, Cloud & DevOps, Machine Learning, Big Data, web designing, Lifetime SSL Solutions, Figma & Adobe XD.
+                        Skills: Full Stack Development, Cloud &amp; DevOps, Machine Learning, Big Data, web designing, Lifetime SSL Solutions, Figma &amp; Adobe XD.
                     </p>
                     <a href="#about" class="hero-link">Learn More About Me</a>
                 </div>
@@ -55,7 +68,7 @@ html_content = """<!DOCTYPE html>
             </section>
         </div>
 
-        <!-- About & Skills Panel (Margin left. Touches right. Rounded left corners) -->
+        <!-- About &amp; Skills Panel (Margin left. Touches right. Rounded left corners) -->
         <section id="about" class="panel-about">
             <h2 class="panel-title white-title">About Me</h2>
             <p class="panel-subtitle">I'm <span class="gold-text">Anusha Stefy J</span>, Full Stack Developer / UI Designer</p>
@@ -72,7 +85,7 @@ html_content = """<!DOCTYPE html>
                 <div class="skill-pill"><i class="ph ph-cloud"></i> Cloud (AWS) DevOps</div>
                 <div class="skill-pill"><i class="ph ph-database"></i> Big Data Engineering</div>
                 <div class="skill-pill"><i class="ph ph-brain"></i> Machine Learning</div>
-                <div class="skill-pill"><i class="ph ph-app-window"></i> Figma & Adobe</div>
+                <div class="skill-pill"><i class="ph ph-app-window"></i> Figma &amp; Adobe</div>
                 <div class="skill-pill disabled"><i class="ph ph-lock"></i> Learning...</div>
                 <div class="skill-pill disabled"><i class="ph ph-lock"></i> Learning...</div>
                 <div class="skill-pill disabled"><i class="ph ph-lock"></i> Learning...</div>
@@ -179,13 +192,15 @@ html_content = """<!DOCTYPE html>
     <script src="script.js"></script>
 </body>
 </html>
-"""
+`;
 
-css_content = """@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+// ── CSS ───────────────────────────────────────────────────────────────────────
+
+const cssContent = `@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --bg-page: #40424a; /* Lighter background seen behind panels */
-    --bg-main: #181920; /* Dark navy inside panels */
+    --bg-page: #40424a;
+    --bg-main: #181920;
     --bg-panel-light: #25252d;
     --gold: #d4af37;
     --gold-light: #f2cf9e;
@@ -248,14 +263,12 @@ a {
     transform: scale(1.1);
 }
 
-/* Main Container */
 .main-container {
     max-width: 1400px;
     margin: 0 auto;
     background-color: var(--bg-page);
 }
 
-/* Base Panel Styles */
 .panel-hero {
     background: var(--bg-main);
     border-bottom-right-radius: var(--panel-radius);
@@ -302,7 +315,6 @@ a {
     border-top: 1px solid var(--gold-muted);
 }
 
-/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -330,9 +342,7 @@ a {
     transition: 0.3s;
 }
 
-.nav-link:hover {
-    color: var(--gold-light);
-}
+.nav-link:hover { color: var(--gold-light); }
 
 .contact-pill {
     background: var(--gold-light);
@@ -342,11 +352,8 @@ a {
     font-weight: 600;
 }
 
-.contact-pill:hover {
-    background: #fff;
-}
+.contact-pill:hover { background: #fff; }
 
-/* Hero Section */
 .hero-section {
     display: flex;
     align-items: center;
@@ -354,10 +361,7 @@ a {
     min-height: 50vh;
 }
 
-.hero-left {
-    flex: 1.2;
-    padding-right: 2rem;
-}
+.hero-left { flex: 1.2; padding-right: 2rem; }
 
 .hero-greeting {
     font-size: 1.1rem;
@@ -443,7 +447,6 @@ a {
     font-weight: 500;
 }
 
-/* Panel Typography */
 .panel-title {
     font-size: 2.5rem;
     font-weight: 600;
@@ -452,7 +455,7 @@ a {
 }
 
 .white-title { color: var(--text-white); }
-.gold-title { color: var(--gold-light); }
+.gold-title  { color: var(--gold-light); }
 
 .panel-subtitle {
     text-align: center;
@@ -461,10 +464,7 @@ a {
     margin-bottom: 1.5rem;
 }
 
-.gold-text {
-    color: var(--gold-light);
-    font-weight: 600;
-}
+.gold-text { color: var(--gold-light); font-weight: 600; }
 
 .panel-desc {
     text-align: center;
@@ -475,7 +475,6 @@ a {
     line-height: 1.8;
 }
 
-/* Skills Grid */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -510,11 +509,9 @@ a {
     background: rgba(255,255,255,0.02);
     cursor: not-allowed;
 }
-.skill-pill.disabled:hover {
-    transform: none;
-}
 
-/* Portfolio Layout */
+.skill-pill.disabled:hover { transform: none; }
+
 .portfolio-layout {
     display: flex;
     gap: 4rem;
@@ -537,9 +534,7 @@ a {
     transition: 0.3s;
 }
 
-.port-filter:hover {
-    color: var(--gold-light);
-}
+.port-filter:hover { color: var(--gold-light); }
 
 .port-filter.active {
     color: var(--gold-light);
@@ -569,7 +564,6 @@ a {
     transform: scale(1.02);
 }
 
-/* Contact Box */
 .contact-box {
     display: flex;
     border: 1px solid var(--gold-muted);
@@ -602,19 +596,10 @@ a {
     transition: 0.3s;
 }
 
-.info-item i {
-    font-size: 1.2rem;
-    color: var(--gold-light);
-}
+.info-item i { font-size: 1.2rem; color: var(--gold-light); }
+.hover-gold:hover { color: var(--gold-light); }
 
-.hover-gold:hover {
-    color: var(--gold-light);
-}
-
-.contact-form-side {
-    flex: 1.5;
-    padding: 3rem;
-}
+.contact-form-side { flex: 1.5; padding: 3rem; }
 
 .gold-form {
     display: flex;
@@ -634,10 +619,7 @@ a {
     transition: 0.3s;
 }
 
-.gold-input:focus {
-    outline: none;
-    border-color: var(--gold-light);
-}
+.gold-input:focus { outline: none; border-color: var(--gold-light); }
 
 .gold-submit-btn {
     align-self: center;
@@ -653,16 +635,9 @@ a {
     transition: 0.3s;
 }
 
-.gold-submit-btn:hover {
-    background: #fff;
-}
+.gold-submit-btn:hover { background: #fff; }
 
-/* Footer Typography */
-.footer-logo {
-    font-weight: 800;
-    color: var(--gold-light);
-    letter-spacing: 2px;
-}
+.footer-logo { font-weight: 800; color: var(--gold-light); letter-spacing: 2px; }
 
 .footer-nav {
     display: flex;
@@ -671,28 +646,17 @@ a {
     color: var(--text-gray);
 }
 
-.footer-nav a:hover {
-    color: var(--text-white);
-}
+.footer-nav a:hover { color: var(--text-white); }
 
-.footer-socials {
-    display: flex;
-    gap: 1rem;
-    font-size: 1.2rem;
-    color: var(--text-gray);
-}
+.footer-socials { display: flex; gap: 1rem; font-size: 1.2rem; color: var(--text-gray); }
+.footer-socials a:hover { color: var(--text-white); }
 
-.footer-socials a:hover {
-    color: var(--text-white);
-}
-
-/* Modal */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 2000; 
-    left: 0; top: 0; width: 100%; height: 100%; 
-    overflow: auto; 
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto;
     background-color: rgba(0,0,0,0.85);
     backdrop-filter: blur(8px);
 }
@@ -704,7 +668,7 @@ a {
     animation: zoom 0.3s ease;
 }
 
-@keyframes zoom { from {transform:scale(0.8)} to {transform:scale(1)} }
+@keyframes zoom { from { transform: scale(0.8) } to { transform: scale(1) } }
 
 .close-modal {
     position: absolute; top: 20px; right: 35px; color: var(--gold-light);
@@ -713,7 +677,6 @@ a {
 
 .close-modal:hover { color: #fff; }
 
-/* Responsive */
 @media(max-width: 1024px) {
     .main-container { padding: 0 2rem; }
     .floating-nav { display: none; }
@@ -741,10 +704,11 @@ a {
     .panel-portfolio { margin-right: 1rem; padding: 3rem 1.5rem; border-top-right-radius: 40px; border-bottom-right-radius: 40px; }
     .panel-contact { margin-left: 1rem; padding: 3rem 1.5rem; border-top-left-radius: 40px; border-bottom-left-radius: 40px; }
 }
-"""
+`;
 
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
+// ── Write files ───────────────────────────────────────────────────────────────
 
-with open("style.css", "w", encoding="utf-8") as f:
-    f.write(css_content)
+fs.writeFileSync(INDEX_PATH, htmlContent, 'utf8');
+fs.writeFileSync(CSS_PATH,   cssContent,  'utf8');
+
+console.log('✅  Dark theme written to index.html and style.css');

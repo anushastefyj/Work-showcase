@@ -1,11 +1,24 @@
-import os
+// rewrite.js — Node.js equivalent of rewrite.py
+// Writes the full light-theme index.html and style.css from scratch.
+//
+// Usage:  node rewrite.js
+//   (run from the root of the portfolio folder, i.e. "New Portfolio/")
 
-html_content = """<!DOCTYPE html>
+const fs   = require('fs');
+const path = require('path');
+
+const ROOT       = path.join(__dirname, '..');
+const INDEX_PATH = path.join(ROOT, 'index.html');
+const CSS_PATH   = path.join(ROOT, 'style.css');
+
+// ── HTML ──────────────────────────────────────────────────────────────────────
+
+const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Portfolio of Anusha Stefy J - UI/UX Designer & Web Developer.">
+    <meta name="description" content="Personal Portfolio of Anusha Stefy J - UI/UX Designer &amp; Web Developer.">
     <title>Anusha Stefy J | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -218,7 +231,7 @@ html_content = """<!DOCTYPE html>
                     <span class="cert-icon">☁️</span>
                     <div class="cert-details">
                         <h4>AWS Cloud Essentials</h4>
-                        <p>AWS Training & Certification</p>
+                        <p>AWS Training &amp; Certification</p>
                     </div>
                     <button class="cert-view-btn" onclick="openCertModal('assets/cert2.png')">View</button>
                 </div>
@@ -309,9 +322,11 @@ html_content = """<!DOCTYPE html>
     <script src="script.js"></script>
 </body>
 </html>
-"""
+`;
 
-css_content = """@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+// ── CSS ───────────────────────────────────────────────────────────────────────
+
+const cssContent = `@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
 
 :root {
     --bg-light: #e5e5e5;
@@ -339,7 +354,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Top Bar */
 .top-bar {
     background-color: #000;
     color: #fff;
@@ -357,10 +371,9 @@ body {
     gap: 2rem;
 }
 
-/* Split Header */
 .split-header {
     position: absolute;
-    top: 30px; /* Below top bar */
+    top: 30px;
     width: 100%;
     z-index: 100;
     background: transparent;
@@ -400,9 +413,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.split-links .nav-item:hover {
-    color: #ccc;
-}
+.split-links .nav-item:hover { color: #ccc; }
 
 .contact-btn-nav {
     background: #ffffff;
@@ -411,7 +422,6 @@ body {
     border-radius: 30px;
 }
 
-/* Hero Section */
 .split-hero {
     position: relative;
     width: 100%;
@@ -421,10 +431,7 @@ body {
 
 .hero-bg-split {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0;
     background: linear-gradient(105deg, var(--bg-light) 45%, var(--bg-dark) 45.1%);
 }
@@ -433,8 +440,7 @@ body {
     position: relative;
     z-index: 10;
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding-top: 80px;
@@ -448,11 +454,7 @@ body {
     padding: 0 4rem;
 }
 
-.hero-greeting {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
+.hero-greeting { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
 
 .hero-name-split {
     font-size: 4.5rem;
@@ -469,17 +471,13 @@ body {
     margin-bottom: 3rem;
 }
 
-.hero-socials {
-    display: flex;
-    gap: 1.5rem;
-}
+.hero-socials { display: flex; gap: 1.5rem; }
 
 .social-square {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 45px; height: 45px;
     background-color: #d1d1d1;
     color: #111;
     border-radius: 4px;
@@ -487,10 +485,7 @@ body {
     transition: 0.3s;
 }
 
-.social-square:hover {
-    background-color: #111;
-    color: #fff;
-}
+.social-square:hover { background-color: #111; color: #fff; }
 
 .hero-right {
     flex: 1;
@@ -500,13 +495,8 @@ body {
     position: relative;
 }
 
-.hero-profile-split {
-    width: 80%;
-    max-width: 600px;
-    object-fit: cover;
-}
+.hero-profile-split { width: 80%; max-width: 600px; object-fit: cover; }
 
-/* IT Banner */
 .it-banner {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -516,26 +506,13 @@ body {
     text-align: center;
 }
 
-.it-banner-content {
-    position: relative;
-    z-index: 2;
-}
-
-.it-banner-content p:first-child {
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-}
-
-.it-desc {
-    color: #999;
-    font-size: 0.9rem;
-}
+.it-banner-content { position: relative; z-index: 2; }
+.it-banner-content p:first-child { font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; }
+.it-desc { color: #999; font-size: 0.9rem; }
 
 .it-watermark {
     position: absolute;
-    right: -5%;
-    bottom: -40%;
+    right: -5%; bottom: -40%;
     font-size: 15rem;
     font-weight: 900;
     color: rgba(255,255,255,0.03);
@@ -543,23 +520,10 @@ body {
     line-height: 1;
 }
 
-/* Base Layout for Light Sections */
-.light-section {
-    padding: 6rem 2rem;
-    background-color: var(--bg-light);
-    text-align: center;
-}
+.light-section { padding: 6rem 2rem; background-color: var(--bg-light); text-align: center; }
+.gray-bg { background-color: var(--bg-gray); }
+.section-container { max-width: 800px; margin: 0 auto; }
 
-.gray-bg {
-    background-color: var(--bg-gray);
-}
-
-.section-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Bordered Title */
 .bordered-title {
     display: inline-block;
     padding: 0.5rem 2rem;
@@ -570,17 +534,9 @@ body {
     margin-bottom: 3rem;
 }
 
-.dark-title {
-    border-color: var(--text-light);
-    color: var(--text-light);
-}
+.dark-title { border-color: var(--text-light); color: var(--text-light); }
 
-/* About Section */
-.about-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-}
+.about-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; }
 
 .explore-btn {
     display: inline-block;
@@ -594,68 +550,20 @@ body {
     transition: 0.3s;
 }
 
-.explore-btn:hover {
-    color: var(--text-muted);
-    border-color: var(--text-muted);
-}
+.explore-btn:hover { color: var(--text-muted); border-color: var(--text-muted); }
 
-.about-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    text-align: left;
-}
+.about-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; }
+.detail-item h4 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+.detail-item p  { font-size: 0.85rem; color: var(--text-muted); }
 
-.detail-item h4 {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
+.skills-category { margin-bottom: 4rem; }
+.category-title { font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 2rem; }
+.skills-icon-grid { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.skill-icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.skill-icon-item .icon { font-size: 2.5rem; }
+.skill-icon-item .label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
 
-.detail-item p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-/* Skills Section */
-.skills-category {
-    margin-bottom: 4rem;
-}
-
-.category-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
-}
-
-.skills-icon-grid {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
-
-.skill-icon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.skill-icon-item .icon {
-    font-size: 2.5rem;
-}
-
-.skill-icon-item .label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-/* Portfolio Section */
-.portfolio-section {
-    background-color: var(--bg-dark);
-}
+.portfolio-section { background-color: var(--bg-dark); }
 
 .portfolio-header {
     background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
@@ -669,14 +577,11 @@ body {
 .portfolio-header::before {
     content: '';
     position: absolute;
-    top:0; left:0; width:100%; height:100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.5);
 }
 
-.portfolio-header .bordered-title {
-    position: relative;
-    z-index: 2;
-}
+.portfolio-header .bordered-title { position: relative; z-index: 2; }
 
 .portfolio-filters {
     background-color: var(--bg-darker);
@@ -694,28 +599,15 @@ body {
     letter-spacing: 1px;
 }
 
-.filter-item.active, .filter-item:hover {
-    color: var(--text-light);
-}
+.filter-item.active, .filter-item:hover { color: var(--text-light); }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 
-.portfolio-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-}
+.portfolio-item { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
 
 .portfolio-img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
 }
 
 .portfolio-hover {
@@ -730,37 +622,16 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.portfolio-item:hover .portfolio-hover {
-    opacity: 1;
-}
-
-.portfolio-hover h3 {
-    color: #fff;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
+.portfolio-item:hover .portfolio-hover { opacity: 1; }
+.portfolio-hover h3 { color: #fff; font-size: 1.25rem; margin-bottom: 1rem; }
 .portfolio-hover a {
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    font-size: 0.8rem;
-    transition: 0.3s;
+    color: #fff; border: 1px solid #fff;
+    padding: 0.5rem 1rem; text-decoration: none;
+    font-size: 0.8rem; transition: 0.3s;
 }
+.portfolio-hover a:hover { background: #fff; color: #000; }
 
-.portfolio-hover a:hover {
-    background: #fff;
-    color: #000;
-}
-
-/* Certificates */
-.certs-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: left;
-}
+.certs-list { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
 
 .cert-item {
     display: flex;
@@ -770,20 +641,9 @@ body {
     border-radius: 8px;
 }
 
-.cert-icon {
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-.cert-details h4 {
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-}
-
-.cert-details p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
+.cert-icon { font-size: 1.5rem; margin-right: 1.5rem; }
+.cert-details h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+.cert-details p { font-size: 0.85rem; color: var(--text-muted); }
 
 .cert-view-btn {
     margin-left: auto;
@@ -795,19 +655,9 @@ body {
     transition: 0.3s;
 }
 
-.cert-view-btn:hover {
-    background: var(--text-dark);
-    color: var(--text-light);
-}
+.cert-view-btn:hover { background: var(--text-dark); color: var(--text-light); }
 
-/* Contact */
-.minimal-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+.minimal-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
 
 .form-row input, .form-row textarea {
     width: 100%;
@@ -821,9 +671,7 @@ body {
     outline: none;
 }
 
-.form-row textarea {
-    resize: vertical;
-}
+.form-row textarea { resize: vertical; }
 
 .submit-line-btn {
     background: transparent;
@@ -837,37 +685,17 @@ body {
     margin-top: 1rem;
 }
 
-/* Footer */
-.dark-footer {
-    background: var(--bg-darker);
-    color: var(--text-muted);
-    text-align: center;
-    padding: 4rem 2rem;
-}
+.dark-footer { background: var(--bg-darker); color: var(--text-muted); text-align: center; padding: 4rem 2rem; }
+.footer-socials { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+.footer-socials a { color: var(--text-light); transition: 0.3s; }
+.footer-socials a:hover { color: var(--text-muted); }
 
-.footer-socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.footer-socials a {
-    color: var(--text-light);
-    transition: 0.3s;
-}
-
-.footer-socials a:hover {
-    color: var(--text-muted);
-}
-
-/* Modal */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0; top: 0; width: 100%; height: 100%; 
-    overflow: auto; 
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    overflow: auto;
     background-color: rgba(0,0,0,0.8);
     backdrop-filter: blur(5px);
 }
@@ -878,14 +706,13 @@ body {
     animation: zoom 0.3s ease;
 }
 
-@keyframes zoom { from {transform:scale(0.8)} to {transform:scale(1)} }
+@keyframes zoom { from { transform: scale(0.8) } to { transform: scale(1) } }
 
 .close-modal {
     position: absolute; top: 20px; right: 35px; color: #f1f1f1;
     font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s;
 }
 
-/* Responsive */
 @media(max-width: 768px) {
     .hero-bg-split { background: linear-gradient(180deg, var(--bg-light) 50%, var(--bg-dark) 50.1%); }
     .hero-content-split { flex-direction: column; padding-top: 100px; }
@@ -900,10 +727,11 @@ body {
     .cert-icon { margin-right: 0; }
     .cert-view-btn { margin-left: 0; }
 }
-"""
+`;
 
-with open(r"c:\Users\anush\Desktop\anuprojects\New Portfolio\index.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
+// ── Write files ───────────────────────────────────────────────────────────────
 
-with open(r"c:\Users\anush\Desktop\anuprojects\New Portfolio\style.css", "w", encoding="utf-8") as f:
-    f.write(css_content)
+fs.writeFileSync(INDEX_PATH, htmlContent, 'utf8');
+fs.writeFileSync(CSS_PATH,   cssContent,  'utf8');
+
+console.log('✅  Light theme written to index.html and style.css');
