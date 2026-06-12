@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+Live server:[ (https://work-showcase-smhy.vercel.app/)](https://work-showcase-smhy.vercel.app/)
 # Personal Portfolio Website
 
 ## Overview
