@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio of Anusha Stefy J - UI/UX Designer & Web Developer.">
+    <title>Anusha Stefy J | Portfolio</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Floating Side Navigation -->
+    <div class="floating-nav">
+        <a href="#home" class="f-nav-item active" aria-label="Home"><i class="ph ph-house"></i></a>
+        <a href="#about" class="f-nav-item" aria-label="About"><i class="ph ph-user"></i></a>
+        <a href="#portfolio" class="f-nav-item" aria-label="Portfolio"><i class="ph ph-briefcase"></i></a>
+        <a href="#certifications" class="f-nav-item" aria-label="Certifications"><i class="ph ph-certificate"></i></a>
+        <a href="#contact" class="f-nav-item" aria-label="Contact"><i class="ph ph-phone"></i></a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Hero Section Panel (Touches top, left, right. Rounded bottom-right) -->
+        <div class="panel-hero">
+            <header class="header">
+                <a href="#home" class="logo"><img src="assets/logo.png" alt="ASJ Logo" class="logo-img"></a>
+                <nav class="top-nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About Me</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#certifications" class="nav-link">Certifications</a>
+                    <a href="#contact" class="nav-link contact-pill">Contact Me</a>
+                </nav>
+            </header>
+
+            <section id="home" class="hero-section">
+                <div class="hero-left">
+                    <p class="hero-greeting">Hi, My Name Is</p>
+                    <h1 class="hero-name">Anusha Stefy J</h1>
+                    <div class="hero-title-pill">MLOps / AI Platform Engineer</div>
+                    <p class="hero-desc">
+                        Architecting scalable AI infrastructure, robust MLOps pipelines, and high-performance model deployment platforms for production environments.
+                    </p>
+                    <a href="#about" class="hero-link">Learn More About Me</a>
+                </div>
+                <div class="hero-right">
+                    <div class="profile-glow-ring">
+                        <img src="assets/profile.png?v=3" alt="Anusha Stefy J" class="profile-img">
+                    </div>
+                    <div class="location-tag">
+                        <i class="ph ph-map-pin"></i> Ramakuppam, Andhra Pradhesh
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About & Skills Panel (Margin left. Touches right. Rounded left corners) -->
+        <section id="about" class="panel-about">
+            <h2 class="panel-title white-title">About Me</h2>
+            <p class="panel-subtitle">I'm <span class="gold-text">Anusha Stefy J</span>, MLOps / AI Platform Engineer</p>
+            <p class="panel-desc">
+                I am a skilled MLOps and AI Platform Engineer with a passion for building scalable and reliable AI infrastructure. Specializing in end-to-end machine learning lifecycles, I design robust deployment pipelines, manage containerized environments, and architect cloud-native platforms to ensure seamless monitoring, scaling, and operationalization of ML and GenAI solutions.
+            </p>
+
+            <h3 class="panel-title white-title" style="margin-top: 4rem; font-size: 2rem;">Skills</h3>
+            
+            <div class="skills-card-container">
+                <!-- Generative AI Card -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-magic-wand"></i> Generative AI</div>
+                    <div class="category-skills">
+                        <span class="small-pill">Large Language Models (LLMs)</span>
+                        <span class="small-pill">LangChain</span>
+                        <span class="small-pill">RAG Pipelines</span>
+                        <span class="small-pill">Hugging Face</span>
+                        <span class="small-pill">OpenAI API</span>
+                        <span class="small-pill">Vector Databases</span>
+                    </div>
+                </div>
+
+                <!-- Card 1 -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-rocket"></i> MLOps & Deployment</div>
+                    <div class="category-skills">
+                        <span class="small-pill">Docker</span>
+                        <span class="small-pill">FastAPI</span>
+                        <span class="small-pill">MLflow</span>
+                        <span class="small-pill">DVC</span>
+                        <span class="small-pill">GitHub Actions</span>
+                        <span class="small-pill">CI/CD pipelines</span>
+                        <span class="small-pill">model serving</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-cloud-arrow-up"></i> Cloud Platforms</div>
+                    <div class="category-skills">
+                        <span class="small-pill">AWS SageMaker</span>
+                        <span class="small-pill">Google Vertex AI</span>
+                        <span class="small-pill">Kubernetes (basics)</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-brain"></i> Machine Learning & Deep Learning</div>
+                    <div class="category-skills">
+                        <span class="small-pill">Python</span>
+                        <span class="small-pill">PyTorch</span>
+                        <span class="small-pill">scikit-learn</span>
+                        <span class="small-pill">TensorFlow</span>
+                        <span class="small-pill">model versioning</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-database"></i> Data & Pipelines</div>
+                    <div class="category-skills">
+                        <span class="small-pill">SQL</span>
+                        <span class="small-pill">Apache Airflow</span>
+                        <span class="small-pill">Spark (basics)</span>
+                        <span class="small-pill">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="skill-category-card">
+                    <div class="category-header"><i class="ph ph-code"></i> Development</div>
+                    <div class="category-skills">
+                        <span class="small-pill">Full Stack (FastAPI + React)</span>
+                        <span class="small-pill">Git / GitHub</span>
+                        <span class="small-pill">Linux / Bash</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Panel (Margin right. Touches left. Rounded right corners) -->
+        <section id="portfolio" class="panel-portfolio">
+            <h2 class="panel-title gold-title">Portfolio</h2>
+
+            <div class="portfolio-layout">
+                <!-- Vertical Filters -->
+                <div class="portfolio-sidebar">
+                    <a href="#" class="port-filter active">All</a>
+                    <a href="#" class="port-filter">MLOps & Cloud</a>
+                    <a href="#" class="port-filter">Computer Vision</a>
+                    <a href="#" class="port-filter">NLP</a>
+                    <a href="#" class="port-filter">FastAPI</a>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="portfolio-grid">
+                    <a href="https://github.com/anushastefyj/podmind-ai-kubernetes-intelligence" target="_blank" class="project-square">
+                        <h3>Podmind AI K8s</h3>
+                        <p>AI-driven intelligence and monitoring for Kubernetes clusters.</p>
+                    </a>
+                    <a href="https://github.com/anushastefyj/AgriVision-AI-Smart-Crop-Disease-Detection-System" target="_blank" class="project-square">
+                        <h3>AgriVision AI</h3>
+                        <p>Intelligent crop disease detection using Deep Learning, Computer Vision, and FastAPI.</p>
+                    </a>
+                    <a href="https://github.com/anushastefyj/AI-Powered-Sign-Language-to-Speech" target="_blank" class="project-square">
+                        <h3>Sign Language to Speech</h3>
+                        <p>Real-time AI converter using Deep Learning (CNN) and Flask.</p>
+                    </a>
+                    <a href="https://github.com/anushastefyj/CLOUD-MONITORING-AND-ALERTS" target="_blank" class="project-square">
+                        <h3>Cloud Monitoring</h3>
+                        <p>Robust cloud monitoring and alerting systems for high-availability infrastructure.</p>
+                    </a>
+                    <a href="https://github.com/anushastefyj/DESIGN-A-MULTI-CLOUD-ARCHITECTURE" target="_blank" class="project-square">
+                        <h3>Multi-Cloud Architecture</h3>
+                        <p>Scalable and resilient multi-cloud architecture design patterns.</p>
+                    </a>
+                    <a href="https://github.com/anushastefyj/AI-Resume-Screening" target="_blank" class="project-square">
+                        <h3>AI Resume Screening</h3>
+                        <p>Automated resume parsing and candidate ranking using NLP and Machine Learning.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Panel (Margin left. Touches right. Rounded left corners) -->
+        <section id="certifications" class="panel-certifications">
+            <h2 class="panel-title white-title">Certifications & Achievements</h2>
+            <p class="panel-subtitle">A showcase of my continuous learning in <span class="gold-text">AI, Cloud, and Software Engineering</span>.</p>
+            
+            <div class="cert-grid">
+                <div class="cert-card" onclick="openCertModal('assets/cert1.png')">
+                    <img src="assets/cert1.png" alt="Certification 1">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert2.png')">
+                    <img src="assets/cert2.png" alt="Certification 2">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert3.png')">
+                    <img src="assets/cert3.png" alt="Certification 3">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert4.png')">
+                    <img src="assets/cert4.png" alt="Certification 4">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert5.png')">
+                    <img src="assets/cert5.png" alt="Certification 5">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert6.png')">
+                    <img src="assets/cert6.png" alt="Certification 6">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert7.png')">
+                    <img src="assets/cert7.png" alt="Certification 7">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert8.png')">
+                    <img src="assets/cert8.png" alt="Certification 8">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert9.png')">
+                    <img src="assets/cert9.png" alt="Certification 9">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert10.png')">
+                    <img src="assets/cert10.png" alt="Certification 10">
+                </div>
+                <div class="cert-card" onclick="openCertModal('assets/cert11.png')">
+                    <img src="assets/cert11.png" alt="Certification 11">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Panel (Margin right. Touches left. Rounded right corners) -->
+        <section id="contact" class="panel-contact">
+            <h2 class="panel-title gold-title">Contact Me</h2>
+
+            <div class="contact-box">
+                <!-- Left Side: Info -->
+                <div class="contact-info-side">
+                    <h3 class="contact-sub">Contact Info</h3>
+                    <div class="info-item">
+                        <i class="ph ph-envelope-simple"></i>
+                        <span>anushastefy002@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="ph ph-user"></i>
+                        <span>Anusha Stefy J</span>
+                    </div>
+
+                    <h3 class="contact-sub" style="margin-top: 2.5rem;">Social Handles</h3>
+                    <a href="https://github.com/anushastefyj" target="_blank" class="info-item hover-gold">
+                        <i class="ph ph-github-logo"></i>
+                        <span>anushastefyj</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/anusha-stefy-j-2a43a9378/" target="_blank"
+                        class="info-item hover-gold">
+                        <i class="ph ph-linkedin-logo"></i>
+                        <span>anusha-stefy-j</span>
+                    </a>
+                    <a href="https://instagram.com/ms_micky_mini/" target="_blank" class="info-item hover-gold">
+                        <i class="ph ph-instagram-logo"></i>
+                        <span>ms_micky_mini</span>
+                    </a>
+                </div>
+
+                <!-- Right Side: Form -->
+                <div class="contact-form-side">
+                    <form class="gold-form">
+                        <input type="text" placeholder="Name" required class="gold-input">
+                        <input type="email" placeholder="Email" required class="gold-input">
+                        <textarea placeholder="Message" rows="5" required class="gold-input"
+                            style="resize: vertical;"></textarea>
+                        <button type="submit" class="gold-submit-btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (Full width) -->
+        <footer class="footer">
+            <div class="footer-logo"><img src="assets/logo.png" alt="ASJ Logo" class="logo-img"></div>
+            <div class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+                <span>&copy; 2026 Anusha Stefy J</span>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/anusha-stefy-j-2a43a9378/" target="_blank"><i
+                        class="ph ph-linkedin-logo"></i></a>
+                <a href="https://instagram.com/ms_micky_mini/" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+                <a href="https://github.com/anushastefyj" target="_blank"><i class="ph ph-github-logo"></i></a>
+                <a href="mailto:anushastefy002@gmail.com" target="_blank"><i class="ph ph-envelope-simple"></i></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeCertModal()">&times;</span>
+        <img class="modal-content" id="certImage">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
