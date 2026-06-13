@@ -2,9 +2,6 @@
 
 # Personal Portfolio Website
 
-## Live Demo
-[https://work-showcase-smhy.vercel.app/](https://work-showcase-smhy.vercel.app/)
-
 ## Overview
 A responsive personal portfolio website built to showcase skills, projects, certifications, and contact information.
 
