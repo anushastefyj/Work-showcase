@@ -39,7 +39,8 @@ fetch_repos.js - fetch GitHub repos
 update_cards.js - update project cards  
 rewrite.js - generate light theme  
 rewrite_dark.js - generate dark theme  
-
+## Live Demo
+[https://work-showcase-smhy.vercel.app/](https://work-showcase-smhy.vercel.app/)
 ## Contact
 Email: anushastefy002@gmail.com  
 GitHub: anushastefyj  
